@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Movie Search</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-	
+
 				<!-- style stuff goes below -->
 			<style type="text/css">
 			body {
 				background-color: e57373;
 			}
 			</style>
-		<meta charset="utf-8"/>
 	</head>
 
 	<body>
@@ -24,18 +24,18 @@
 			<div id="summary"></div>
 			<div id="picture"></div>
 		</center>
-			
 
 
-			
+
+
 			<!-- JS stuff goes below -->
 			<script type="text/javascript">
-			$(function(){				
+			$(function(){
                 $('#button').click(function(e){
                     e.preventDefault();
                     var movieName = $("#showField").val();
                     console.log(movieName);
-                    
+
                     var settings = {
 					  "async": true,
 					  "crossDomain": true,
@@ -44,16 +44,14 @@
 					  "headers": {},
 					  "data": "{}"
 					}
-
 				$.ajax(settings).done(function (response) {
 					var overview = response.results[0].overview;
 				    console.log(response);
 				    $("#summary").text(overview);
-				    
+
 				    var poster = response.results[0].poster_path; //poster picture
 				    var imgPath = "https://image.tmdb.org/t/p/w185/"+poster;
 				    console.log(imgPath);
-
 				    var img=$("<img />").attr("src",imgPath); //creates an "image"
 					$("#picture").empty() //empties the dive where the image goes
 					img.appendTo($("#picture")); //adds the image to the div called movieposter
@@ -62,4 +60,4 @@
             });
 			</script>
 	</body>
-	</html>
+</html>
